@@ -1,17 +1,22 @@
 ---
-import Card from "./Card/index.astro";
-import Pulse from "./Pulse.astro";
+import Card from './Card/index.astro';
+import Pulse from './Pulse.astro';
 ---
 
 <Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
       <h2>Now</h2>
-      <a href="https://sive.rs/nowff" target="_blank">
+      <p>
         <span class="text-xs text-gray-500 cursor-pointer">what's that ?</span>
-      </a>
+      </p>
     </div>
     <Pulse />
   </div>
-  <p class="text-xs">Currently working fulltime</p>
+  <p class="text-xs">Currently open to new opportunities and collaborations.</p>
+  <p class="text-xs">
+    <span class="text-xs text-gray-500 cursor-pointer"
+      >Favourites:
+    </span>Fintech / AI / Third-party integrations
+  </p>
 </Card>
