@@ -3,18 +3,20 @@ import Card from './Card/index.astro';
 import Pulse from './Pulse.astro';
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+<Card colSpan="md:col-span-2" rowSpan="md:row-span-2">
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
       <h2>Hobby</h2>
       <p>
-        <span class="text-xs text-gray-500 cursor-pointer">Outside of work, I enjoy...</span>
+        <span class="text-xs text-gray-500 cursor-pointer"
+          >Outside of work, I enjoy...</span
+        >
       </p>
     </div>
   </div>
   <p class="text-xs">
-    I enjoy solving complex sudoku variants and playing chess. These hobbies
-    challenge my problem-solving skills and strategic thinking, providing a
-    great balance to my tech-focused work.
+    I enjoy solving complex sudoku variants, playing chess and PC games (FPS, BR, Indies).
+    These hobbies challenge my problem-solving skills and strategic thinking,
+    providing a great balance to my tech-focused work.
   </p>
 </Card>
