@@ -1,5 +1,5 @@
 export const LINKS = {
-  github: "https://github.com/Shardul-Kavar",
+  github: "https://github.com/Shardul-Patel",
   linkedin: "https://in.linkedin.com/in/shardul-patel-65a877114",
   discord: "https://discordapp.com/users/1399286980960980992",
   email: "shardulpatel010@gmail.com<",
