@@ -7,18 +7,19 @@ import Tooltip from './Tooltip/index';
 import { Image } from 'astro:assets';
 ---
 
-
 <Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
   <div class="flex w-full h-full">
     <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
       <div class="flex flex-col h-full">
         <h6 class="text-sm font-light m-0 text-gray-500">welcome</h6>
         <p class="m-0 font-light text-xl">
-          Hi, I'm <b class="font-bold">Shardul Patel</b>, a full-stack developer
-          focused on building robust, end-to-end web applications. I combine
-          seamless user experiences, scalable back ends, secure financial
-          transactions and dynamic interactions to deliver polished,
-          high-performing solutions.
+          Hi, I'm <b class="font-bold">Shardul Patel</b>, a backend developer
+          focused on building scalable, secure, and high-performance server-side
+          systems. I specialize in designing robust APIs, reliable
+          microservices, and optimized data workflows that power seamless user
+          experiences and enable secure financial transactions. My goal is to
+          deliver efficient, maintainable, and resilient backend solutions for
+          modern SaaS and enterprise applications.
         </p>
       </div>
       <div class="flex gap-4">
@@ -48,13 +49,12 @@ import { Image } from 'astro:assets';
         </Tooltip>
       </div>
     </div>
-      <Image
-        alt="memoji of gianmarco"
-        class="w-auto max-h-[400px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none macbook-image"
-        height="400"
-        src="/me.png"
-        width="400"
-      />
-</div>
+    <Image
+      alt="memoji of gianmarco"
+      class="w-auto max-h-[400px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none macbook-image"
+      height="400"
+      src="/me.png"
+      width="400"
+    />
   </div>
 </Card>
