@@ -11,6 +11,14 @@
         pointer-events: none;
         mix-blend-mode: difference;
         z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    @media (max-width: 640px) {
+        #cursor-dot, #cursor-dot-outline {
+            display: none;
+        }
     }
 
     #cursor-dot {
@@ -36,8 +44,14 @@
     let mouseY = 0;
     let outlineX = 0;
     let outlineY = 0;
+    let firstMove = true;
 
     document.addEventListener('mousemove', (e) => {
+        if (firstMove) {
+            cursorDot.style.opacity = 1;
+            cursorDotOutline.style.opacity = 1;
+            firstMove = false;
+        }
         mouseX = e.clientX;
         mouseY = e.clientY;
     });

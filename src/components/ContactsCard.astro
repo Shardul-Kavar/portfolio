@@ -1,6 +1,7 @@
 ---
 import Card from './Card/index.astro';
 import { LINKS } from '../lib/constants';
+import { Icon } from 'astro-icon/components';
 ---
 
 <Card colSpan="lg:col-span-1" rowSpan="lg:row-span-3">
@@ -13,7 +14,7 @@ import { LINKS } from '../lib/constants';
     <address class="flex flex-col mt-4">
       <h2 class="text-gray-500">Contact Details</h2>
       <p>
-        <a href="mailto:shardulpatel010@gmail.com" class="hover:underline"
+        <a href="mailto:shardulpatel010@gmail.com" class="glow-on-hover"
           >shardulpatel010@gmail.com</a
         >
       </p>
@@ -22,16 +23,37 @@ import { LINKS } from '../lib/constants';
       <h2 class="text-gray-500">Socials</h2>
       <ul>
         <li>
-          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
+          <a
+            href={LINKS.linkedin}
+            target="_blank"
+            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+          >
+            <Icon class="h-6" name="ri:linkedin-box-fill" />
+            <span>Linkedin</span>
+          </a>
         </li>
         <li>
-          <a href={LINKS.github} target="_blank">Github</a>
+          <a
+            href={LINKS.github}
+            target="_blank"
+            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+          >
+            <Icon class="h-6" name="ri:github-fill" />
+            <span>Github</span>
+          </a>
         </li>
         <!-- <li>
           <a href={LINKS.medium} target="_blank">Medium</a>
         </li> -->
         <li>
-          <a href={LINKS.discord} target="_blank">Discord</a>
+          <a
+            href={LINKS.discord}
+            target="_blank"
+            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+          >
+            <Icon class="h-6" name="ri:discord-fill" />
+            <span>Discord</span>
+          </a>
         </li>
         <!-- <li>
           <a href={LINKS.chess} target="_blank">Chess</a>
@@ -43,3 +65,12 @@ import { LINKS } from '../lib/constants';
     </div> -->
   </div>
 </Card>
+
+<style>
+  .glow-on-hover {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .glow-on-hover:hover {
+    box-shadow: 0px 2px 0 #e63946;
+  }
+</style>
