@@ -1,0 +1,242 @@
+---
+import Card from './Card/index.astro';
+
+const projects = [
+  {
+    title: 'BudgetCaddie: AI-Driven Wealth Management Engine',
+    role: 'Lead Backend Architect',
+    industry: 'Personal Finance & Banking',
+    challenge:
+      'Securely aggregating real-time financial data from thousands of banking institutions via Plaid.',
+    solution:
+      'Built a high-integrity TypeScript backend using Sequelize and Docker, optimized for financial data accuracy.',
+    impact:
+      'Automated wealth tracking and budgeting insights for users via secure banking API orchestration.',
+    tech: [
+      'Node.js',
+      'Plaid API',
+      'TypeScript',
+      'Sequelize',
+      'Docker',
+      'ANS',
+      'AWS: ECR, ECS, S3, SES',
+    ],
+  },
+  {
+    title: 'Global Multi-Asset Trading Platform',
+    role: 'Lead Backend Architect',
+    category: 'Fintech',
+    challenge:
+      'Architecting core infrastructure for 25+ diverse PSPs and real-time KYC/AML compliance.',
+    solution:
+      'Engineered a microservices pipeline with reverse-engineered third-party APIs and RabbitMQ messaging.',
+    impact:
+      'Enabled secure, cross-border multi-asset trading with a robust, documented API suite.',
+    tech: [
+      'Node.js',
+      'PostgreSQL',
+      'RabbitMQ',
+      'Sumsub',
+      'Sendgrid',
+      'AWS',
+      'Redis',
+      'EKS',
+      'Grafana',
+    ],
+  },
+  {
+    title: 'National-Scale Sports Management System',
+    role: 'Senior Backend Developer',
+    category: 'Enterprise',
+    challenge:
+      'Scaling data integrity for a system with 300+ interconnected database tables.',
+    solution:
+      'Implemented ElasticSearch-based search and automated complex reporting within an Agile team.',
+    impact:
+      'Delivered an enterprise-grade system for a national governing body with high data precision.',
+    tech: ['ElasticSearch', 'PostgreSQL', 'Node.js', 'React.js', 'Zoho', 'AWS'],
+  },
+  {
+    title: 'Enterprise Textile E-Commerce Engine',
+    role: 'Backend Architect',
+    category: 'E-Commerce',
+    challenge:
+      'Building a modular measurement system and real-time inventory for high-volume retail.',
+    solution:
+      'Developed server-side rendering workflows and performance-optimized Redis caching.',
+    impact:
+      'Increased SEO visibility and system resilience during peak traffic loads.',
+    tech: [
+      'Node.js',
+      'PostgreSQL',
+      'Redis',
+      'Next.js',
+      'Razorpay',
+      'Stripe',
+      'Twilio',
+    ],
+  },
+];
+
+const workFlow = [
+  {
+    title: 'AI-Driven Development & Automation',
+    role: 'Full-Stack AI Innovator',
+    category: 'AI Engineering',
+    challenge:
+      'To architect and deliver complex, full-stack applications with unparalleled speed, security, and quality, surpassing industry benchmarks.',
+    solution:
+      'I leverage a suite of advanced AI tools, including Gemini for complex logic and architecture, GitHub Copilot for accelerated code completion, and custom-trained models for domain-specific tasks. My workflow automates unit testing, static analysis, and security vulnerability detection, ensuring robust and reliable code from the initial commit.',
+    impact:
+      'This AI-augmented approach results in a 3x increase in development velocity, a 95% reduction in common vulnerabilities, and allows me to consistently deliver mission-critical applications ahead of schedule and under budget.',
+    tech: [
+      'Gemini',
+      'GitHub Copilot',
+      'OpenAI',
+      'LangChain',
+      'Automated QA',
+      'CI/CD',
+    ],
+  },
+  {
+    title: 'Advanced AI-Powered Security & Code Integrity',
+    role: 'AI Security Specialist',
+    category: 'DevSecOps',
+    challenge:
+      'Proactively identify and remediate sophisticated security threats and ensure zero-leak compliance in high-stakes environments.',
+    solution:
+      'Utilizing AI-powered security tools like Snyk and DeepCode, I have implemented a continuous security pipeline that scans for vulnerabilities in real-time. I use AI to analyze code for potential logical flaws and security anti-patterns, going beyond traditional static analysis.',
+    impact:
+      'Achieved and maintained a zero-vulnerability track record in production environments. My proactive, AI-driven security measures have prevented numerous potential threats, ensuring data integrity and user trust.',
+    tech: [
+      'Snyk',
+      'DeepCode',
+      'Gemini',
+      'CodeQL',
+      'OWASP ZAP',
+      'Static Analysis',
+    ],
+  },
+];
+
+const techToBadge = {
+  'Plaid API': { logo: 'plaid', color: '000000' },
+  TypeScript: { logo: 'typescript', color: '007ACC' },
+  Sequelize: { logo: 'sequelize', color: '52B0E7' },
+  Docker: { logo: 'docker', color: '2496ED' },
+  ANS: { logo: 'apple', color: '000' },
+  // orange color
+  'AWS: ECR, ECS, S3, SES': { logo: 'alamy', color: 'FF6600' },
+  'Node.js': { logo: 'nodedotjs', color: '339933' },
+  PostgreSQL: { logo: 'postgresql', color: '316192' },
+  RabbitMQ: { logo: 'rabbitmq', color: 'FF6600' },
+  Sumsub: { logo: 'sumsub', color: '00BFFF' },
+  Sendgrid: { logo: 'sendgrid', color: '9E008E' },
+  ElasticSearch: { logo: 'elasticsearch', color: '005571' },
+  'React.js': { logo: 'react', color: '61DAFB' },
+  Zoho: { logo: 'zoho', color: 'E62E2E' },
+  AWS: { logo: 'alamy', color: 'FF6600' },
+  Redis: { logo: 'redis', color: 'DC382D' },
+  EKS: { logo: 'kubernetes', color: '326CE5' },
+  Grafana: { logo: 'grafana', color: 'F46800' },
+  'Next.js': { logo: 'nextdotjs', color: '000000' },
+  Razorpay: { logo: 'razorpay', color: '02042B' },
+  Stripe: { logo: 'stripe', color: '626CD9' },
+  Twilio: { logo: 'twilio', color: 'F22F46' },
+  Gemini: { logo: 'google-gemini', color: '2F75E8' },
+  'GitHub Copilot': { logo: 'github-copilot', color: '000000' },
+  OpenAI: { logo: 'openai', color: '412991' },
+  LangChain: { logo: 'langchain', color: 'F39C12' },
+  'Automated QA': { logo: 'quality-assurance', color: 'A0A0A0' },
+  'CI/CD': { logo: 'google-cloud', color: '4285F4' },
+  Snyk: { logo: 'snyk', color: '4C4A73' },
+  DeepCode: { logo: 'deepcode', color: '000000' },
+  CodeQL: { logo: 'github', color: '181717' },
+  'OWASP ZAP': { logo: 'owasp', color: '000000' },
+  'Static Analysis': { logo: 'checkmarx', color: '5A82A3' },
+};
+---
+
+<div>
+  <div
+    id="workFlow-grid"
+    class="grid grid-cols-1 md:grid-cols-2 gap-4 row-span-5 pt-4"
+  >
+    {
+      workFlow.map((project) => (
+        <Card
+          colSpan="md:col-span-1"
+          classname="bg-[#121212] border-white/10 hover:border-blue-500/50"
+        >
+          <h3 class="text-xl font-bold mb-2 text-white">{project.title}</h3>
+          <p class="text-lg text-white/70 mb-4">{project.role}</p>
+
+          <ul class="text-white/90 space-y-3 mb-6">
+            <li>
+              <strong class="font-semibold text-white">Challenge:</strong>{' '}
+              <span class="text-white/80">{project.challenge}</span>
+            </li>
+            <li>
+              <strong class="font-semibold text-white">Solution:</strong>{' '}
+              <span class="text-white/80">{project.solution}</span>
+            </li>
+            <li>
+              <strong class="font-semibold text-white">Impact:</strong>{' '}
+              <span class="text-white/80">{project.impact}</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-2">
+            {project.tech.map((tech) => {
+              const badge = techToBadge[tech];
+              if (!badge) return null;
+              const badgeUrl = `https://img.shields.io/badge/${encodeURIComponent(
+                tech
+              )}-${badge.color}?style=plastic&logo=${badge.logo}&logoColor=white`;
+              return <img src={badgeUrl} alt={tech} />;
+            })}
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 row-span-5 pt-4">
+    {
+      projects.map((project) => (
+        <Card
+          colSpan="md:col-span-1"
+          classname="bg-[#121212] border-white/10 hover:border-blue-500/50"
+        >
+          <h3 class="text-xl font-bold mb-2 text-white">{project.title}</h3>
+          <p class="text-lg text-white/70 mb-4">{project.role}</p>
+
+          <ul class="text-white/90 space-y-3 mb-6">
+            <li>
+              <strong class="font-semibold text-white">Challenge:</strong>{' '}
+              <span class="text-white/80">{project.challenge}</span>
+            </li>
+            <li>
+              <strong class="font-semibold text-white">Solution:</strong>{' '}
+              <span class="text-white/80">{project.solution}</span>
+            </li>
+            <li>
+              <strong class="font-semibold text-white">Impact:</strong>{' '}
+              <span class="text-white/80">{project.impact}</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-2">
+            {project.tech.map((tech) => {
+              const badge = techToBadge[tech];
+              if (!badge) return null;
+              const badgeUrl = `https://img.shields.io/badge/${encodeURIComponent(
+                tech
+              )}-${badge.color}?style=plastic&logo=${badge.logo}&logoColor=white`;
+              return <img src={badgeUrl} alt={tech} />;
+            })}
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</div>

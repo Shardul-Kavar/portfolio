@@ -2,194 +2,150 @@
 import Card from './Card/index.astro';
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-8" title="About me">
+<Card colSpan="lg:col-span-1" rowSpan="lg:row-span-8" title="About me">
   <div class="flex flex-col gap-2">
     <div class="text-sm font-light">
-      <p>
-        <!-- Hi, I'm Shardul, a full-stack software developer from India.
-        <br /> -->
-        <br />
-        My primary tools of choice include:
-      </p>
-      <ul class="list-disc list-inside space-y-2">
-        <!-- <li>
-          <strong class="color-red">Frontend:&nbsp;</strong>
-          <div class="flex flex-wrap gap-1">
+      <p>My primary tools of choice include:</p>
+      <div class="space-y-4 mt-4">
+        <!-- Fintech & Security -->
+        <div class="p-3 rounded-lg bg-teal-900/30 border border-teal-700/50">
+          <h4 class="font-bold text-teal-400 mb-2">Fintech & Security</h4>
+          <div class="flex flex-wrap gap-2">
             <img
-              src="https://img.shields.io/badge/html5-%23E34F26.svg?style=plastic&logo=html5&logoColor=white"
-              alt="HTML5"
+              src="https://img.shields.io/badge/Stripe-626CD9?style=plastic&logo=stripe&logoColor=white"
+              alt="Stripe"
             />
             <img
-              src="https://img.shields.io/badge/css3-%231572B6.svg?style=plastic&logo=css3&logoColor=white"
-              alt="CSS3"
+              src="https://img.shields.io/badge/Plaid-000000?style=plastic&logo=open-badges&logoColor=white"
+              alt="Plaid"
             />
             <img
-              src="https://img.shields.io/badge/React-%2320232a.svg?style=plastic&logo=react&logoColor=%2361DAFB"
-              alt="React"
+              src="https://img.shields.io/badge/JWT-000000?style=plastic&logo=json-web-tokens&logoColor=white"
+              alt="JWT"
             />
             <img
-              src="https://img.shields.io/badge/Next-black?style=plastic&logo=next.js&logoColor=white"
-              alt="Next.js"
+              src="https://img.shields.io/badge/Razorpay-02042B?style=plastic&logo=razorpay&logoColor=white"
+              alt="Razorpay"
             />
             <img
-              src="https://img.shields.io/badge/Javascript-%23323330.svg?style=plastic&logo=javascript&logoColor=%23F7DF1E"
-              alt="JavaScript"
+            src="https://img.shields.io/badge/Payment%20Gateway-22A7F0?style=plastic"
+            alt="Payment Gateway Integration"
             />
             <img
-              src="https://img.shields.io/badge/Typescript-%23007ACC.svg?style=plastic&logo=typescript&logoColor=white"
-              alt="TypeScript"
-            />
-            <img
-              src="https://img.shields.io/badge/MUI-%230081CB.svg?style=plastic&logo=mui&logoColor=white"
-              alt="MUI"
-            />
-            <img
-              src="https://img.shields.io/badge/Chart.js-F5788D.svg?style=plastic&logo=chart.js&logoColor=white"
-              alt="Chart.js"
-            />
-            <img
-              src="https://img.shields.io/badge/Electron-191970?style=plastic&logo=Electron&logoColor=white"
-              alt="Electron"
-            /><img
-              src="https://img.shields.io/badge/Astro-%232C2052.svg?style=plastic&logo=astro&logoColor=white"
-              alt="Astro"
-            />
-            <img
-              src="https://img.shields.io/badge/Svelte-%23f1413d.svg?style=plastic&logo=svelte&logoColor=white"
-              alt="Svelte"
+              src="https://img.shields.io/badge/Sumsub%20(KYC/AML)-00BFFF?style=plastic"
+              alt="Sumsub"
             />
           </div>
-        </li> -->
-        <li>
-          <strong class="color-red">Languages:&nbsp;</strong>
-          <div class="flex flex-wrap gap-1">
+        </div>
+
+        <!-- System Architecture & Messaging -->
+        <div>
+          <h4 class="font-bold mb-2">System Architecture & Messaging</h4>
+          <div class="flex flex-wrap gap-2">
             <img
-              src="https://img.shields.io/badge/Javascript-ES6-yellow?logo=javascript"
-              alt="Javascript (ES6+)"
-            />
-            <img
-              src="https://img.shields.io/badge/TypeScript-3178C6?style=plastic&logo=Typescript&logoColor=white"
-              alt="Typescript"
-            />
-          </div>
-        </li>
-        <li>
-          <strong class="color-red">Frameworks & Libraries:&nbsp;</strong>
-          <div class="flex flex-wrap gap-1">
-            <img
-              src="https://img.shields.io/badge/Node.js-6DA55F?style=plastic&logo=node.js&logoColor=white"
-              alt="Node.js"
-            />
-            <img
-              src="https://img.shields.io/badge/Express.js-%23404d59.svg?style=plastic&logo=express&logoColor=%2361DAFB"
-              alt="Express"
-            />
-            <img
-              src="https://img.shields.io/badge/React-%2320232a.svg?style=plastic&logo=react&logoColor=%2361DAFB"
-              alt="React"
-            />
-            <img
-              src="https://img.shields.io/badge/Next-black?style=plastic&logo=next.js&logoColor=white"
-              alt="Next.js"
-            />
-            <img
-              src="https://img.shields.io/badge/-Microservices-264653?style=plastic&logo=microstrategy&logoColor=white"
+              src="https://img.shields.io/badge/Microservices-264653?style=plastic"
               alt="Microservices"
             />
             <img
-              src="https://img.shields.io/badge/Postgres-%23316192.svg?style=plastic&logo=postgresql&logoColor=white"
-              alt="Postgres"
+              src="https://img.shields.io/badge/RabbitMQ-FF6600?style=plastic&logo=rabbitmq&logoColor=white"
+              alt="RabbitMQ"
             />
             <img
-              src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=plastic&logo=mongodb&logoColor=white"
+              src="https://img.shields.io/badge/ElasticSearch-005571?style=plastic&logo=elasticsearch&logoColor=white"
+              alt="ElasticSearch"
+            />
+            <img
+              src="https://img.shields.io/badge/Socket.io-010101?style=plastic&logo=socketdotio&logoColor=white"
+              alt="Socket.io"
+            />
+          </div>
+        </div>
+
+        <!-- Data Persistence -->
+        <div>
+          <h4 class="font-bold mb-2">Data Persistence</h4>
+          <div class="flex flex-wrap gap-2">
+            <img
+              src="https://img.shields.io/badge/PostgreSQL-316192?style=plastic&logo=postgresql&logoColor=white"
+              alt="PostgreSQL"
+            />
+            <img
+              src="https://img.shields.io/badge/MongoDB-4EA94B?style=plastic&logo=mongodb&logoColor=white"
               alt="MongoDB"
             />
             <img
-              src="https://img.shields.io/badge/Firebase-%23039BE5.svg?style=plastic&logo=firebase"
+              src="https://img.shields.io/badge/Redis-DC382D?style=plastic&logo=redis&logoColor=white"
+              alt="Redis"
+            />
+            <img
+              src="https://img.shields.io/badge/Supabase-3ECF8E?style=plastic&logo=supabase&logoColor=white"
+              alt="Supabase"
+            />
+            <img
+              src="https://img.shields.io/badge/Firebase-FFCA28?style=plastic&logo=firebase&logoColor=black"
               alt="Firebase"
             />
-            <img
-              src="https://img.shields.io/badge/-REST%20API-white?style=plastic&logo=smartthings&logoColor=blue"
-              alt="REST API"
-            />
-            <img
-              src="https://img.shields.io/badge/Graphql-E10098?style=plastic&logo=graphql&logoColor=white"
-              alt="GraphQL"
-            />
           </div>
-        </li>
-        <li>
-          <strong class="color-red">DevOps &amp; Hosting:&nbsp;</strong>
-          <div class="flex flex-wrap gap-1">
+        </div>
+
+        <!-- DevOps & Cloud -->
+        <div>
+          <h4 class="font-bold mb-2">DevOps & Cloud</h4>
+          <div class="flex flex-wrap gap-2">
             <img
-              src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=plastic&logo=amazon-aws&logoColor=white"
+              src="https://img.shields.io/badge/AWS-232F3E?style=plastic&logo=amazon-aws&logoColor=white"
               alt="AWS"
             />
             <img
-              src="https://img.shields.io/badge/Heroku-purple.svg?style=plastic&logo=heroku&logoColor=white"
-              alt="Heroku"
-            />
-            <img
-              src="https://img.shields.io/badge/Vercel-%23000000.svg?style=plastic&logo=vercel&logoColor=white"
-              alt="Vercel"
-            />
-            <img
-              src="https://img.shields.io/badge/Netlify-%23000000.svg?style=plastic&logo=netlify&logoColor=#00C7B7"
-              alt="Netlify"
-            />
-            <img
-              src="https://img.shields.io/badge/Nginx-%23009639.svg?style=plastic&logo=nginx&logoColor=white"
-              alt="NGINX"
-            />
-            <img
-              src="https://img.shields.io/badge/Docker-%230db7ed.svg?style=plastic&logo=docker&logoColor=white"
+              src="https://img.shields.io/badge/Docker-2496ED?style=plastic&logo=docker&logoColor=white"
               alt="Docker"
             />
-            <!-- <img
-              src="https://img.shields.io/badge/CI%2FCD-333333?style=plastic&logo=githubactions&logoColor=white"
-              alt="CI/CD"
-            /> -->
-          </div>
-        </li>
-        <li>
-          <strong class="color-red"
-            >Third Party Tools Integrations:&nbsp;</strong
-          >
-          <div class="flex flex-wrap gap-1">
             <img
-              src="https://img.shields.io/badge/ChatGPT-10a37f?style=plastic&logo=openai&logoColor=white"
-              alt="ChatGPT"
-            />
-            <!-- <img
-              src="https://img.shields.io/badge/Payment%20Services-4CAF50?style=plastic&logo=springsecurity&logoColor=black"
-              alt="Payment Services"
-            /> -->
-            <img
-              src="https://img.shields.io/badge/Github-black?style=plastic&logo=github&logoColor=white"
-              alt="GitHub"
+              src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=plastic&logo=github-actions&logoColor=white"
+              alt="GitHub Actions"
             />
             <img
-              src="https://img.shields.io/badge/Slack-4A154B?style=plastic&logo=slack&logoColor=white"
-              alt="Slack"
+              src="https://img.shields.io/badge/Nginx-009639?style=plastic&logo=nginx&logoColor=white"
+              alt="Nginx"
+            />
+            <img
+              src="https://img.shields.io/badge/PM2-2B037A?style=plastic&logo=pm2&logoColor=white"
+              alt="PM2"
             />
           </div>
-        </li>
-      </ul>
+        </div>
+
+        <!-- Languages & Frameworks -->
+        <div>
+          <h4 class="font-bold mb-2">Languages & Frameworks</h4>
+          <div class="flex flex-wrap gap-2">
+            <img
+              src="https://img.shields.io/badge/Node.js-339933?style=plastic&logo=nodedotjs&logoColor=white"
+              alt="Node.js"
+            />
+            <img
+              src="https://img.shields.io/badge/TypeScript-007ACC?style=plastic&logo=typescript&logoColor=white"
+              alt="TypeScript"
+            />
+            <img
+              src="https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=javascript&logoColor=black"
+              alt="JavaScript"
+            />
+            <img
+              src="https://img.shields.io/badge/Express.js-000000?style=plastic&logo=express&logoColor=white"
+              alt="Express.js"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="text-sm font-light">
-      As a full-stack developer, I’m passionate about building resilient, secure
-      systems that deliver seamless end-to-end experiences, from designing clean
-      data contracts and intuitive user interfaces to engineering reliable APIs
-      and scalable infrastructure.
-    </p>
-    <p class="text-sm font-light">
-      I’m stack-agnostic and select the right tools for each problem, whether
-      that means using a proven runtime, or applying a different architectural
-      pattern.
-    </p>
-    <p class="text-sm font-light">
-      My focus is on delivering systems that are scalable, efficient, and easy
-      to maintain across every project I build.
+    <p class="text-sm font-light pt-4">
+      My focus is on delivering systems that are <span class="font-bold"
+        >robust</span
+      >,
+      <span class="font-bold">scalable</span>, <span class="font-bold"
+        >efficient</span
+      >, and <span class="font-bold">easy to maintain</span>.
     </p>
   </div>
 </Card>

@@ -1,0 +1,68 @@
+<div id="cursor-dot" class="w-2 h-2 rounded-full bg-white fixed pointer-events-none mix-blend-difference z-50"></div>
+<div id="cursor-dot-outline" class="w-8 h-8 rounded-full border-2 border-white fixed pointer-events-none mix-blend-difference z-50"></div>
+
+<style>
+    #cursor-dot, #cursor-dot-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        pointer-events: none;
+        mix-blend-mode: difference;
+        z-index: 9999;
+    }
+
+    #cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        transition: transform 0.1s ease-out;
+    }
+
+    #cursor-dot-outline {
+        width: 40px;
+        height: 40px;
+        border: 2px solid white;
+        transition: transform 0.2s ease-out, width 0.3s ease, height 0.3s ease;
+    }
+</style>
+
+<script>
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorDotOutline = document.getElementById('cursor-dot-outline');
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let outlineX = 0;
+    let outlineY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    const animate = () => {
+        if (cursorDot && cursorDotOutline) {
+            cursorDot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+
+            // Lagging effect for the outline
+            outlineX += (mouseX - outlineX) * 0.1;
+            outlineY += (mouseY - outlineY) * 0.1;
+            cursorDotOutline.style.transform = `translate(calc(${outlineX}px - 50%), calc(${outlineY}px - 50%))`;
+        }
+        requestAnimationFrame(animate);
+    };
+
+    requestAnimationFrame(animate);
+
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button')) {
+            cursorDotOutline.style.width = '60px';
+            cursorDotOutline.style.height = '60px';
+        } else {
+            cursorDotOutline.style.width = '40px';
+            cursorDotOutline.style.height = '40px';
+        }
+    });
+</script>

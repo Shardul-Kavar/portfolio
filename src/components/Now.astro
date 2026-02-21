@@ -3,23 +3,23 @@ import Card from './Card/index.astro';
 import Pulse from './Pulse.astro';
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-2">
+<Card colSpan="lg:col-span-1" rowSpan="lg:row-span-2">
   <div class="flex justify-between w-full items-start mb-2">
     <div class="flex flex-col">
       <h2>Now</h2>
-      <p></p>
     </div>
     <Pulse />
   </div>
-  <p class="text-xs">
-    <span class="text-xs text-gray-500 cursor-pointer">what's that?</span>
-
-    <p class="text-xs mb-2">
-      Currently open to new opportunities and collaborations.
+  <div class="mb-2">
+    <p class="text-xs text-gray-400">
+      <!-- Currently open to new opportunities and collaborations. -->
+      <!-- <span>&bull;</span> Working as an Independent Contractor for a leading
+      fintech startup. <br /> -->
+      <span>&bull;</span> Currently open to new opportunities and collaborations.
     </p>
-  </p>
+  </div>
   <p class="text-xs">
-    <span class="text-xs text-gray-500 cursor-pointer">Favourites: </span><br />
-    Fintech / AI / Third-party integrations
+    <span class="text-xs text-gray-500">Favourites: </span><br />
+    Fintech / AI / Third-party integrations / Production quality prototypes
   </p>
 </Card>
