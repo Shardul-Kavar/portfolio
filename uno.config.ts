@@ -2,6 +2,7 @@
 import { defineConfig, presetWind3, presetWebFonts } from "unocss";
 
 export default defineConfig({
+  darkMode: 'class',
   content: {
     filesystem: [
       // Narrow scope to specific directories
