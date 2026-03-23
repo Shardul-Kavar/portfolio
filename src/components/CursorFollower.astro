@@ -48,8 +48,8 @@
 
     document.addEventListener('mousemove', (e) => {
         if (firstMove) {
-            cursorDot.style.opacity = 1;
-            cursorDotOutline.style.opacity = 1;
+            cursorDot.style.opacity = 0.25;
+            cursorDotOutline.style.opacity = 0.5;
             firstMove = false;
         }
         mouseX = e.clientX;
