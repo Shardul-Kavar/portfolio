@@ -19,7 +19,7 @@ const { title, body, colSpan, rowSpan, href, colorText, height, classname } =
 ---
 
 <div
-  class={`card flex flex-col h-max sm:h-auto group overflow-hidden transform-y-[-40%] bg-darkslate-500 shadow-lg rounded-lg p-6 border border-darkslate-100 hover:border-primary-500 align-start flex-none ${
+  class={`card flex flex-col h-max sm:h-auto group overflow-hidden transform-y-[-40%] bg-gray-50 dark:bg-darkslate-500 shadow-m rounded-lg p-6 border border-gray-200 dark:border-darkslate-100 hover:border-accent-light-500 dark:hover:border-accent-dark-400 align-start flex-none ${
     height || 'h-full'
   } justify-start relative transform perspective-1200 w-full transition duration-75 ease-in-out col-span-1 ${
     colSpan || 'md:col-span-2'
@@ -29,7 +29,7 @@ const { title, body, colSpan, rowSpan, href, colorText, height, classname } =
     href ? (
       <a class={`h-full w-full ${colorText || ''}`} href={href}>
         <Icon
-          class="h-6 float-right group-hover:text-primary-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ease-in-out duration-100 z-20"
+          class="h-6 float-right group-hover:text-accent-light-500 dark:group-hover:text-accent-dark-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ease-in-out duration-100 z-20"
           name="ri:arrow-right-up-line"
         />
         <Content body={body} title={title}>

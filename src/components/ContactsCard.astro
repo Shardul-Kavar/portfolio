@@ -7,12 +7,12 @@ import { Icon } from 'astro-icon/components';
 <Card colSpan="lg:col-span-1" rowSpan="lg:row-span-3">
   <div class="h-full">
     <header class="flex items-center">
-      <h1 class="text-white text-xl font-bold">
+      <h1 class="text-gray-900 dark:text-gray-100 text-xl font-bold">
         Let's start working together!
       </h1>
     </header>
     <address class="flex flex-col mt-4">
-      <h2 class="text-gray-500">Contact Details</h2>
+      <h2 class="text-gray-600 dark:text-gray-400">Contact Details</h2>
       <p>
         <a href="mailto:shardulpatel010@gmail.com" class="glow-on-hover"
           >shardulpatel010@gmail.com</a
@@ -20,13 +20,13 @@ import { Icon } from 'astro-icon/components';
       </p>
     </address>
     <div class="flex flex-col mt-4 w-fit">
-      <h2 class="text-gray-500">Socials</h2>
+      <h2 class="text-gray-600 dark:text-gray-400">Socials</h2>
       <ul>
         <li>
           <a
             href={LINKS.linkedin}
             target="_blank"
-            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+            class="glow-on-hover hover:text-accent-light-500 dark:hover:text-accent-dark-400 transition-colors flex items-center gap-2"
           >
             <Icon class="h-6" name="ri:linkedin-box-fill" />
             <span>Linkedin</span>
@@ -36,33 +36,27 @@ import { Icon } from 'astro-icon/components';
           <a
             href={LINKS.github}
             target="_blank"
-            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+            class="glow-on-hover hover:text-accent-light-500 dark:hover:text-accent-dark-400 transition-colors flex items-center gap-2"
           >
             <Icon class="h-6" name="ri:github-fill" />
             <span>Github</span>
           </a>
         </li>
-        <!-- <li>
-          <a href={LINKS.medium} target="_blank">Medium</a>
-        </li> -->
+
         <li>
           <a
             href={LINKS.discord}
             target="_blank"
-            class="glow-on-hover hover:text-primary-500 transition-colors flex items-center gap-2"
+            class="glow-on-hover hover:text-accent-light-500 dark:hover:text-accent-dark-400 transition-colors flex items-center gap-2"
           >
             <Icon class="h-6" name="ri:discord-fill" />
             <span>Discord</span>
           </a>
         </li>
-        <!-- <li>
-          <a href={LINKS.chess} target="_blank">Chess</a>
-        </li> -->
+
       </ul>
     </div>
-    <!-- <div class="flex flex-col mt-4 w-fit">
-      <h2 class="text-teal-500 cursor-pointer">✨ Leave a review!</h2>
-    </div> -->
+
   </div>
 </Card>
 
@@ -71,6 +65,9 @@ import { Icon } from 'astro-icon/components';
     transition: box-shadow 0.3s ease-in-out;
   }
   .glow-on-hover:hover {
-    box-shadow: 0px 2px 0 #e63946;
+    box-shadow: 0px 2px 0 var(--color-accent-light-500);
+  }
+  .dark .glow-on-hover:hover {
+    box-shadow: 0px 2px 0 var(--color-accent-dark-400);
   }
 </style>

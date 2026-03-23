@@ -1,0 +1,12 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="theme-switcher"
+  class="custom-btn text-xl max-h-[50px] shadow-m shadow-gray-900/20 active:shadow-none active:translate-x-[3px] active:translate-y-[3px] text-gray-900 dark:text-gray-200 px-5 py-2 border border-accent-light-500 border-none hover:text-accent-light-500 dark:hover:text-accent-dark-400 transition-colors duration-100 ease-in-out bg-gray-100 dark:bg-gray-900 cursor-pointer rounded-lg"
+  aria-label="Theme switcher"
+>
+  <Icon name="ri:moon-line" class="h-6 w-6 block dark:hidden" />
+  <Icon name="ri:sun-line" class="h-6 w-6 hidden dark:block" />
+</button>
