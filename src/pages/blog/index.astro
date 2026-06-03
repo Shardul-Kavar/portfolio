@@ -9,12 +9,7 @@ const posts = (await getCollection('blog'))?.sort(
     (blogEntryA.data.pubDate || new Date()).getTime()
 );
 
-const description = `Full stack developer skilled in building seamless 
-end-to-end applications, from responsive front-end interfaces; 
-complete with engaging animations and micro-interactions to 
-robust back-end systems and efficient databases. 
-Dedicated to delivering intuitive user experiences while 
-ensuring performance, security, and scalability across the entire technology stack.`;
+const description = `Blog by Shardul Patel (Shardul Kavar), a Backend Developer and Senior Software Engineer. Exploring topics in robust back-end systems, API design, microservices, databases, and software architecture. Dedicated to sharing insights on performance, security, and scalable enterprise applications.`;
 ---
 
 <script>
@@ -26,7 +21,7 @@ ensuring performance, security, and scalability across the entire technology sta
   animate(sequence as AnimationSequence);
 </script>
 
-<Layout description={description} title="Shardul Kavar - Blog">
+<Layout description={description} title="Shardul Patel | Blog - Backend Developer & Senior Software Engineer">
   <main
     class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
   >
