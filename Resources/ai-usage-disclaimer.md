@@ -70,7 +70,7 @@ When a new situation doesn't fit neatly into the rules above, I ask myself, roug
 
 **Attribution template I use for project documentation:**
 
-> *AI Assistance Disclosure: Portions of this codebase were drafted with the assistance of Claude Code / GitHub Copilot / Gemini and reviewed, tested, and approved by [Shardul Kavar] before deployment. Architecture decisions, security review, and final sign-off were performed by a human.*
+> *AI Assistance Disclosure: Portions of this codebase were drafted with the assistance of Claude Code / GitHub Copilot / Gemini and reviewed, tested, and approved by [Shardul Patel] before deployment. Architecture decisions, security review, and final sign-off were performed by a human.*
 
 ## 8. When detailed disclosure becomes necessary
 

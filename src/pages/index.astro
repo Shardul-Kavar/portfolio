@@ -8,17 +8,9 @@ import AboutMe from '../components/AboutMe.astro';
 import Now from '../components/Now.astro';
 import Hobby from '../components/Hobby.astro';
 import Globe from '../components/Globe';
-import { getCollection } from 'astro:content';
-import { formatDate } from '../lib/helpers';
 import ExperienceGrid from '../components/ExperienceGrid.astro';
 import Slogan from '../components/Slogan.astro';
 import CertificationsModal from '../components/CertificationsModal.astro';
-
-const posts = (await getCollection('blog'))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
 ---
 
 <script>

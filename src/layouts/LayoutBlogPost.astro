@@ -1,6 +1,8 @@
 ---
 import { formatDate } from "../lib/helpers";
 import BasicLayout from "./BasicLayout.astro";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
 type Props = {
   title: string;
@@ -8,25 +10,62 @@ type Props = {
   pubDate: Date;
   minutesRead: string;
   url: string;
+  cover?: ImageMetadata | string | undefined;
+  coverAlt?: string | undefined;
 };
 
-const { title, description, pubDate, minutesRead, url } = Astro.props;
+const { title, description, pubDate, minutesRead, url, cover, coverAlt } =
+  Astro.props;
 ---
 
 <BasicLayout description={description} page="blog" slug={url} title={title}>
-  <main class="mx-auto max-w-3xl w-full h-screen p-8 text-neutral-100">
+  <main
+    class="mx-auto max-w-3xl w-full min-h-screen px-6 py-10 sm:px-8 sm:py-12 pb-36 text-gray-900 dark:text-neutral-100"
+  >
     <a
-      class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg mb-8"       href="/blog"
-      >Back</a
+      class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 border-1 border-solid border-neutral-600 rounded-lg mb-8 inline-block transition-colors"
+      href="/blog"
     >
-    <div class="my-10">
-      <h1 class="text-5xl font-semibold">{title}</h1>
-      <div class="flex justify-between pt-4 text-gray-500 text-sm">
-        <p>{formatDate(pubDate)}</p>
-        <p>{minutesRead}</p>
+      Back
+    </a>
+
+    <header class="my-8">
+      <h1
+        class="text-3xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-neutral-100"
+      >
+        {title}
+      </h1>
+      <div
+        class="flex items-center justify-between pt-4 text-gray-500 dark:text-gray-400 text-sm border-b border-gray-200 dark:border-neutral-800 pb-4 mt-2"
+      >
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        <span>{minutesRead}</span>
       </div>
-    </div>
-    <article class="prose prose-p:text-red-500 prose-slate prose-invert">
+    </header>
+
+    {
+      cover && (
+        <div class="my-8 overflow-hidden rounded-xl border border-gray-200 dark:border-neutral-800 shadow-lg">
+          {typeof cover === "string" ? (
+            <img
+              src={cover}
+              alt={coverAlt || title}
+              class="w-full h-auto max-h-[480px] object-cover"
+              loading="eager"
+            />
+          ) : (
+            <Image
+              src={cover}
+              alt={coverAlt || title}
+              class="w-full h-auto max-h-[480px] object-cover"
+              loading="eager"
+            />
+          )}
+        </div>
+      )
+    }
+
+    <article class="blog-content w-full leading-relaxed">
       <slot />
     </article>
   </main>

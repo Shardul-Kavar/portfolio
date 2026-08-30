@@ -1,13 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getPublishedPosts } from '../../lib/blog';
 import Layout from '../../layouts/Layout.astro';
 import PostRow from '../../components/Blog/PostRow.astro';
 
-const posts = (await getCollection('blog'))?.sort(
-  (blogEntryA, blogEntryB) =>
-    (blogEntryB.data.pubDate || new Date()).getTime() -
-    (blogEntryA.data.pubDate || new Date()).getTime()
-);
+const posts = await getPublishedPosts();
 
 const description = `Full stack developer skilled in building seamless 
 end-to-end applications, from responsive front-end interfaces; 
@@ -26,9 +22,9 @@ ensuring performance, security, and scalability across the entire technology sta
   animate(sequence as AnimationSequence);
 </script>
 
-<Layout description={description} title="Shardul Kavar - Blog">
+<Layout description={description} page="blog" title="Shardul Kavar - Blog">
   <main
-    class="w-screen h-screen flex flex-col justify-start items-start max-w-3xl mx-auto p-8"
+    class="w-full min-h-screen flex flex-col justify-start items-start max-w-3xl mx-auto px-6 py-10 sm:px-8 sm:py-12 pb-36"
   >
     <a
       class="text-white bg-neutral-900 hover:bg-neutral-800 px-4 py-2 mb-8 border-1 border-solid border-neutral-600 rounded-lg"
@@ -39,9 +35,9 @@ ensuring performance, security, and scalability across the entire technology sta
       {
         posts?.map((post) => (
           <PostRow
-            date={post.data.pubDate || new Date()}
+            date={post.data.publishAt}
             id={post.id}
-            title={post.data.title || 'No title'}
+            title={post.data.title}
           />
         ))
       }

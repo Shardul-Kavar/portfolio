@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div
@@ -26,9 +27,9 @@
       Copilot — as part of my day-to-day development work. Given that I build
       fintech infrastructure that handles real money, real bank data, and real
       KYC/AML compliance flows, I think transparency about <em>how</em> I use AI
-      matters as much as the code itself. This page explains where AI fits into
-      my process, what stays off-limits, and how I keep quality and accountability
-      in my own hands.
+      matters as much as the code itself. This page explains where AI fits into my
+      process, what stays off-limits, and how I keep quality and accountability in
+      my own hands.
     </p>
 
     <h2 class="text-2xl font-semibold mb-3 mt-6">
@@ -40,9 +41,8 @@
     </p>
     <ul class="list-disc list-inside mb-4 space-y-1">
       <li>
-        <strong>Scaffolding & boilerplate</strong> — generating first drafts of
-        CRUD endpoints, config files, test scaffolding, and repetitive integration
-        code.
+        <strong>Scaffolding & boilerplate</strong> — generating first drafts of CRUD
+        endpoints, config files, test scaffolding, and repetitive integration code.
       </li>
       <li>
         <strong>Code review support</strong> — using AI-assisted static analysis
@@ -50,9 +50,9 @@
         before they reach production.
       </li>
       <li>
-        <strong>Debugging & research</strong> — working through undocumented or
-        legacy third-party APIs faster by using AI to reason through logs, error
-        traces, and documentation gaps.
+        <strong>Debugging & research</strong> — working through undocumented or legacy
+        third-party APIs faster by using AI to reason through logs, error traces,
+        and documentation gaps.
       </li>
       <li>
         <strong>Documentation</strong> — drafting API docs, README files, and internal
@@ -60,9 +60,9 @@
       </li>
     </ul>
     <p class="mb-4">
-      I do <strong>not</strong> use AI to make final architecture decisions on
-      high-stakes systems (payment flows, compliance pipelines, auth/security logic)
-      without personally reviewing and testing the outcome. AI proposes; I dispose.
+      I do <strong>not</strong> use AI to make final architecture decisions on high-stakes
+      systems (payment flows, compliance pipelines, auth/security logic) without
+      personally reviewing and testing the outcome. AI proposes; I dispose.
     </p>
 
     <h2 class="text-2xl font-semibold mb-3 mt-6">
@@ -73,15 +73,15 @@
     </p>
     <ul class="list-disc list-inside mb-4 space-y-1">
       <li>
-        <strong>No client secrets, credentials, or PII in prompts.</strong> API
-        keys, database dumps, customer financial records, KYC documents, and access
-        tokens never get pasted into an AI tool — full stop.
+        <strong>No client secrets, credentials, or PII in prompts.</strong> API keys,
+        database dumps, customer financial records, KYC documents, and access tokens
+        never get pasted into an AI tool — full stop.
       </li>
       <li>
-        <strong>No proprietary client code in public/consumer AI tools</strong
-        > unless the client has explicitly approved it and the tool's data-handling
-        terms meet their compliance requirements (many of my clients operate under
-        regulatory obligations that don't allow this at all).
+        <strong>No proprietary client code in public/consumer AI tools</strong> unless
+        the client has explicitly approved it and the tool's data-handling terms
+        meet their compliance requirements (many of my clients operate under regulatory
+        obligations that don't allow this at all).
       </li>
       <li>
         <strong>Anonymized/synthetic data only for prompting.</strong> If I need
@@ -103,8 +103,8 @@
     </p>
     <ul class="list-disc list-inside mb-4 space-y-1">
       <li>
-        <strong>I read every line before it's committed.</strong> No unreviewed
-        AI output goes into a pull request.
+        <strong>I read every line before it's committed.</strong> No unreviewed AI
+        output goes into a pull request.
       </li>
       <li>
         <strong>Automated + manual testing.</strong> Unit tests, integration tests,
@@ -148,8 +148,8 @@
         as possible.
       </li>
       <li>
-        <strong>Overreliance</strong> — the speed AI offers can tempt shortcuts
-        on edge-case testing. I try to notice when I'm trusting the model's confidence
+        <strong>Overreliance</strong> — the speed AI offers can tempt shortcuts on
+        edge-case testing. I try to notice when I'm trusting the model's confidence
         more than the evidence.
       </li>
     </ul>
@@ -164,8 +164,7 @@
     <ol class="list-decimal list-inside mb-4 space-y-1">
       <li>
         <strong
-          >Would this violate a client NDA, contract, or regulatory
-          obligation?</strong
+          >Would this violate a client NDA, contract, or regulatory obligation?</strong
         > If yes, it's off the table — no further discussion needed.
       </li>
       <li>
@@ -174,14 +173,14 @@
         > If there's meaningful risk, I don't do it, or I anonymize first.
       </li>
       <li>
-        <strong>Am I still the one accountable for correctness?</strong> If AI
-        assistance would mean I can no longer honestly vouch for the code, I slow
-        down and review more, or skip the assist.
+        <strong>Am I still the one accountable for correctness?</strong> If AI assistance
+        would mean I can no longer honestly vouch for the code, I slow down and review
+        more, or skip the assist.
       </li>
       <li>
         <strong>Would my client be surprised to learn I did this?</strong> If the
-        honest answer is "yes, and they wouldn't be happy," that's a signal to
-        ask first or not do it.
+        honest answer is "yes, and they wouldn't be happy," that's a signal to ask
+        first or not do it.
       </li>
     </ol>
 
@@ -206,8 +205,8 @@
       </li>
       <li>
         <strong>Future maintainers</strong> — code should be as legible and well-documented
-        whether AI helped write it or not; no one downstream should hit a wall
-        of code nobody can explain.
+        whether AI helped write it or not; no one downstream should hit a wall of
+        code nobody can explain.
       </li>
     </ul>
 
@@ -215,19 +214,19 @@
       7. Disclosure — what I tell people, and when
     </h2>
     <p class="mb-4">
-      <strong>General baseline:</strong> I disclose that AI tools (Claude Code,
-      Gemini, Copilot) are part of my standard workflow, openly and by default
-      — it's listed on my homepage under my toolset. I don't treat AI assistance
-      as something to hide or something that needs a disclaimer on every commit,
-      the same way I wouldn't caveat every use of an IDE autocomplete or a linter.
+      <strong>General baseline:</strong> I disclose that AI tools (Claude Code, Gemini,
+      Copilot) are part of my standard workflow, openly and by default — it's listed
+      on my homepage under my toolset. I don't treat AI assistance as something to
+      hide or something that needs a disclaimer on every commit, the same way I wouldn't
+      caveat every use of an IDE autocomplete or a linter.
     </p>
     <p class="mb-4">
       <strong>Where I go further:</strong>
     </p>
     <ul class="list-disc list-inside mb-4 space-y-1">
       <li>
-        <strong>Client work</strong> — new clients are told upfront, before any
-        contract is signed, which AI tools are part of my process and what my data-handling
+        <strong>Client work</strong> — new clients are told upfront, before any contract
+        is signed, which AI tools are part of my process and what my data-handling
         boundaries are (Section 2). If a client wants zero AI involvement in their
         codebase, that's a term we set explicitly.
       </li>
@@ -238,8 +237,8 @@
       </li>
       <li>
         <strong>Written content representing my own views</strong> (this page included)
-        — drafted with AI assistance, edited and approved by me; the judgments
-        and commitments here are mine.
+        — drafted with AI assistance, edited and approved by me; the judgments and
+        commitments here are mine.
       </li>
     </ul>
     <p class="mb-4">
@@ -248,11 +247,12 @@
     <blockquote class="border-l-4 border-primary-500 pl-4 italic mb-4">
       <p>
         <em
-          >AI Assistance Disclosure: Portions of this codebase were drafted
-          with the assistance of Claude Code / GitHub Copilot / Gemini and
-          reviewed, tested, and approved by [Shardul Kavar] before deployment.
+          >AI Assistance Disclosure: Portions of this codebase were drafted with
+          the assistance of Claude Code / GitHub Copilot / Gemini and reviewed,
+          tested, and approved by [Shardul Patel] before deployment.
           Architecture decisions, security review, and final sign-off were
-          performed by a human.</em>
+          performed by a human.</em
+        >
       </p>
     </blockquote>
 
@@ -260,14 +260,13 @@
       8. When detailed disclosure becomes necessary
     </h2>
     <p class="mb-4">
-      A brief, standing disclosure (like this page) is enough for routine
-      work. I move to explicit, case-by-case disclosure when:
+      A brief, standing disclosure (like this page) is enough for routine work.
+      I move to explicit, case-by-case disclosure when:
     </p>
     <ul class="list-disc list-inside mb-4 space-y-1">
       <li>
         The client operates under regulatory regimes that require documenting
-        tooling used in system development (common in fintech/compliance
-        work).
+        tooling used in system development (common in fintech/compliance work).
       </li>
       <li>
         The deliverable is security- or compliance-critical, where knowing <em
@@ -305,19 +304,23 @@
       <ul class="list-disc list-inside space-y-2">
         <li>
           <a href="#" class="text-primary-500 hover:underline"
-            >[Link to Certificate 1: AI Fundamentals]</a>
+            >[Link to Certificate 1: AI Fundamentals]</a
+          >
         </li>
         <li>
           <a href="#" class="text-primary-500 hover:underline"
-            >[Link to Certificate 2: Machine Learning Specialization]</a>
+            >[Link to Certificate 2: Machine Learning Specialization]</a
+          >
         </li>
         <li>
           <a href="#" class="text-primary-500 hover:underline"
-            >[Link to Certificate 3: Deep Learning with TensorFlow]</a>
+            >[Link to Certificate 3: Deep Learning with TensorFlow]</a
+          >
         </li>
         <li>
           <a href="#" class="text-primary-500 hover:underline"
-            >... (Add more certificate links/images here)</a>
+            >... (Add more certificate links/images here)</a
+          >
         </li>
       </ul>
       <p class="mt-4 text-sm text-gray-400">
@@ -342,10 +345,12 @@
   document.addEventListener('astro:page-load', () => {
     const closeButton = document.getElementById('ai-modal-close-button');
     const modal = document.getElementById('ai-disclaimer-modal');
-    const openCertificatesButton = document.getElementById('open-certificates-carousel-button');
+    const openCertificatesButton = document.getElementById(
+      'open-certificates-carousel-button'
+    );
 
     if (!closeButton || !modal || !openCertificatesButton) {
-      console.log("+++++++++++++++++++++++++++++++")
+      console.log('+++++++++++++++++++++++++++++++');
       return;
     }
 
@@ -363,7 +368,9 @@
       }
     };
 
-    document.addEventListener('open-ai-disclaimer-modal', () => toggleModal(true)); // Open via custom event
+    document.addEventListener('open-ai-disclaimer-modal', () =>
+      toggleModal(true)
+    ); // Open via custom event
     closeButton.addEventListener('click', () => toggleModal(false)); // Close via button click
 
     modal.addEventListener('click', (e) => {
@@ -381,7 +388,9 @@
 
     // Event listener for the new certificates button
     openCertificatesButton.addEventListener('click', () => {
-      document.dispatchEvent(new CustomEvent('open-certificates-carousel-modal'));
+      document.dispatchEvent(
+        new CustomEvent('open-certificates-carousel-modal')
+      );
       toggleModal(false); // Close the disclaimer modal when opening the carousel
     });
   });

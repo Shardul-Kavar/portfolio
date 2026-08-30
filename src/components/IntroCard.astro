@@ -55,12 +55,18 @@ import { Image } from 'astro:assets';
             <span class="sr-only">Linkedin Profile</span>
           </Button>
         </a>
-        <Tooltip client:visible>
+        <a aria-label="blog" href="/blog">
+          <Button aria-label="blog">
+            <Icon class="h-6" name="ri:article-line" />
+            <span class="sr-only">Blog</span>
+          </Button>
+        </a>
+        <!-- <Tooltip client:visible>
           <Button aria-label="easter egg btn">
             <Icon class="h-6" name="ri:emotion-laugh-line" />
             <span class="sr-only">Easter egg button</span>
           </Button>
-        </Tooltip>
+        </Tooltip> -->
       </div>
     </div>
   </div>
