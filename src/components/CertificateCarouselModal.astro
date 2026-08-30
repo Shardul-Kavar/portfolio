@@ -1,0 +1,202 @@
+---
+import { certificates } from '../data/certificates';
+---
+
+<div
+  id="certificates-carousel-modal"
+  class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black bg-opacity-75 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  tabindex="-1"
+>
+  <div
+    class="relative bg-gray-800 text-white rounded-lg shadow-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6"
+  >
+    <button
+      id="certificates-carousel-close-button"
+      class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+      aria-label="Close"
+    >
+      &times;
+    </button>
+    <h2 class="text-3xl font-bold mb-4">AI Course Certificates</h2>
+
+    <!-- Carousel Content -->
+    <div class="carousel-container relative w-full overflow-hidden">
+      <div
+        class="carousel-track flex transition-transform duration-300 ease-in-out"
+      >
+        {
+          certificates.map((cert) => (
+            <div class="carousel-item flex-shrink-0 w-full p-2">
+              <img
+                src={cert.imagePath}
+                alt={cert.name}
+                class="w-full h-auto object-contain rounded-lg mb-2"
+              />
+              <p>{cert.name}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Carousel Navigation (Optional) -->
+      <button
+        id="carousel-prev"
+        class="absolute top-1/2 left-2 -translate-y-1/2 bg-gray-700 p-2 rounded-full text-white hover:bg-gray-600 focus:outline-none"
+      >
+        &#10094;
+      </button>
+      <button
+        id="carousel-next"
+        class="absolute top-1/2 right-2 -translate-y-1/2 bg-gray-700 p-2 rounded-full text-white hover:bg-gray-600 focus:outline-none"
+      >
+        &#10095;
+      </button>
+    </div>
+
+    <p class="mt-4 text-sm text-gray-400 text-center">
+      (Note: Actual certificate images/PDFs would be embedded here.)
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const modal = document.getElementById('certificates-carousel-modal');
+    const closeButton = document.getElementById(
+      'certificates-carousel-close-button'
+    );
+    const carouselTrack = modal?.querySelector('.carousel-track');
+    const prevButton = document.getElementById('carousel-prev'); // Keep these for event listeners
+    const nextButton = document.getElementById('carousel-next'); // Keep these for event listeners
+
+    if (
+      !modal ||
+      !closeButton ||
+      !carouselTrack ||
+      !prevButton ||
+      !nextButton ||
+      !modal.querySelector('.carousel-item') // Check if at least one item exists
+    ) {
+      return;
+    }
+
+    let currentIndex = 0;
+    let lastFocusedElement: HTMLElement | null = null;
+    let autoplayInterval: number | undefined;
+    const AUTOPLAY_DELAY = 3000;
+
+    // Ensure modal is hidden on initial load
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+
+    const updateCarousel = () => {
+      const currentCarouselItems = modal?.querySelectorAll('.carousel-item'); // Re-query items
+      if (
+        carouselTrack &&
+        currentCarouselItems &&
+        currentCarouselItems.length > 0
+      ) {
+        carouselTrack.style.width = `${currentCarouselItems.length * 100}%`;
+        // Apply transform
+        carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+      }
+    };
+
+    const startAutoplay = () => {
+      const currentCarouselItems = modal?.querySelectorAll('.carousel-item');
+      if (currentCarouselItems && currentCarouselItems.length > 1) {
+        stopAutoplay(); // Clear any existing interval
+        autoplayInterval = setInterval(() => {
+          nextButton.click();
+        }, AUTOPLAY_DELAY);
+      }
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(autoplayInterval);
+    };
+
+    const toggleModal = (shouldOpen) => {
+      if (shouldOpen) {
+        lastFocusedElement = document.activeElement as HTMLElement; // Store the currently focused element
+        modal.classList.remove('hidden'); // Make visible
+        modal.setAttribute('aria-hidden', 'false');
+        modal.focus(); // Focus the modal itself when it opens
+        currentIndex = 0; // Reset carousel to first item when opening
+        updateCarousel();
+        startAutoplay(); // Start autoplay when modal opens
+      } else {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+        // Return focus to the element that opened the modal, or a sensible fallback
+        if (lastFocusedElement && document.body.contains(lastFocusedElement)) {
+          lastFocusedElement.focus();
+        } else {
+          const sparklesImage = document.getElementById('sparkles-image');
+          if (sparklesImage) {
+            sparklesImage.focus();
+          } else {
+            document.body.focus();
+          }
+        }
+        stopAutoplay();
+        lastFocusedElement = null; // Clear the stored element
+      }
+    };
+
+    document.addEventListener('open-certificates-carousel-modal', () =>
+      toggleModal(true)
+    );
+    closeButton.addEventListener('click', () => toggleModal(false));
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        toggleModal(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        toggleModal(false);
+      }
+    });
+
+    prevButton.addEventListener('click', () => {
+      const currentCarouselItems = modal?.querySelectorAll('.carousel-item'); // Re-query items
+      if (currentCarouselItems.length > 0) {
+        currentIndex =
+          (currentIndex - 1 + currentCarouselItems.length) %
+          currentCarouselItems.length;
+      }
+      startAutoplay(); // Restart autoplay on manual navigation
+      updateCarousel();
+    });
+
+    nextButton.addEventListener('click', () => {
+      const currentCarouselItems = modal?.querySelectorAll('.carousel-item'); // Re-query items
+      if (currentCarouselItems.length > 0) {
+        currentIndex = (currentIndex + 1) % currentCarouselItems.length;
+      }
+      startAutoplay(); // Restart autoplay on manual navigation
+      updateCarousel();
+    });
+
+    // Pause autoplay on hover, resume on mouse leave
+    const carouselContainer = modal?.querySelector('.carousel-container');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', stopAutoplay);
+      carouselContainer.addEventListener('mouseleave', startAutoplay);
+    }
+  });
+</script>
+
+<style>
+  /* Basic styling for the carousel, UnoCSS should handle most of it */
+  .carousel-item {
+    /* Ensure padding is included in the width calculation for flex items */
+    box-sizing: border-box;
+  }
+</style>

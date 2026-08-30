@@ -1,0 +1,388 @@
+---
+---
+
+<div
+  id="ai-disclaimer-modal"
+  class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black bg-opacity-75 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+>
+  <div
+    class="relative bg-gray-800 text-white rounded-lg shadow-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6"
+  >
+    <button
+      id="ai-modal-close-button"
+      class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl"
+      aria-label="Close"
+    >
+      &times;
+    </button>
+    <h1 class="text-3xl font-bold mb-4">AI Collaboration & Ethics Policy</h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: August 2026</p>
+
+    <p class="mb-4">
+      I use AI tools — primarily Claude Code, along with Gemini and GitHub
+      Copilot — as part of my day-to-day development work. Given that I build
+      fintech infrastructure that handles real money, real bank data, and real
+      KYC/AML compliance flows, I think transparency about <em>how</em> I use AI
+      matters as much as the code itself. This page explains where AI fits into
+      my process, what stays off-limits, and how I keep quality and accountability
+      in my own hands.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      1. Where AI fits into my workflow
+    </h2>
+    <p class="mb-4">
+      I treat AI as an accelerant, not a replacement for engineering judgment.
+      In practice, that means:
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>Scaffolding & boilerplate</strong> — generating first drafts of
+        CRUD endpoints, config files, test scaffolding, and repetitive integration
+        code.
+      </li>
+      <li>
+        <strong>Code review support</strong> — using AI-assisted static analysis
+        (alongside Snyk, CodeQL, OWASP ZAP) to catch vulnerabilities and anti-patterns
+        before they reach production.
+      </li>
+      <li>
+        <strong>Debugging & research</strong> — working through undocumented or
+        legacy third-party APIs faster by using AI to reason through logs, error
+        traces, and documentation gaps.
+      </li>
+      <li>
+        <strong>Documentation</strong> — drafting API docs, README files, and internal
+        runbooks that I then edit for accuracy.
+      </li>
+    </ul>
+    <p class="mb-4">
+      I do <strong>not</strong> use AI to make final architecture decisions on
+      high-stakes systems (payment flows, compliance pipelines, auth/security logic)
+      without personally reviewing and testing the outcome. AI proposes; I dispose.
+    </p>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      2. Boundaries around sensitive and confidential information
+    </h2>
+    <p class="mb-4">
+      This is the part I hold hardest, given the nature of my client work:
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>No client secrets, credentials, or PII in prompts.</strong> API
+        keys, database dumps, customer financial records, KYC documents, and access
+        tokens never get pasted into an AI tool — full stop.
+      </li>
+      <li>
+        <strong>No proprietary client code in public/consumer AI tools</strong
+        > unless the client has explicitly approved it and the tool's data-handling
+        terms meet their compliance requirements (many of my clients operate under
+        regulatory obligations that don't allow this at all).
+      </li>
+      <li>
+        <strong>Anonymized/synthetic data only for prompting.</strong> If I need
+        AI's help reasoning through a data-shape problem, I use dummy schemas and
+        fabricated sample records, never production data.
+      </li>
+      <li>
+        <strong>NDAs govern, not defaults.</strong> Where a client contract restricts
+        AI tool usage, that contract wins — regardless of what I'd otherwise choose
+        to do.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      3. How I maintain quality control
+    </h2>
+    <p class="mb-4">
+      AI-assisted output goes through the same bar as anything I ship myself:
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>I read every line before it's committed.</strong> No unreviewed
+        AI output goes into a pull request.
+      </li>
+      <li>
+        <strong>Automated + manual testing.</strong> Unit tests, integration tests,
+        and security scans run on AI-assisted code exactly as they would on hand-written
+        code — arguably more, since I'm calibrating trust in newer tools.
+      </li>
+      <li>
+        <strong>I verify, not assume, correctness.</strong> Especially for anything
+        touching money movement, currency conversion, or compliance logic, I trace
+        the logic manually rather than trusting that it "looks right."
+      </li>
+      <li>
+        <strong>I own the bugs.</strong> If AI-assisted code ships with a defect,
+        that's a mistake in <em>my</em> process, not an excuse. I don't attribute
+        failures to the tool.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      4. Ethical issues specific to my field
+    </h2>
+    <p class="mb-4">
+      Working at the intersection of fintech and AI raises a few risks I stay
+      deliberately alert to:
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>Compliance accuracy</strong> — KYC/AML and payment logic has real
+        regulatory and financial consequences if AI-generated code is subtly wrong
+        (off-by-one errors in currency handling, missed edge cases in fraud checks,
+        etc.).
+      </li>
+      <li>
+        <strong>Security surface area</strong> — AI-generated code can introduce
+        plausible-looking but insecure patterns (weak validation, injection risks,
+        improper secret handling). I treat AI output as untrusted input until reviewed.
+      </li>
+      <li>
+        <strong>Data minimization</strong> — even anonymized prompts can leak structural
+        information about a client's systems. I keep prompts as minimal and abstracted
+        as possible.
+      </li>
+      <li>
+        <strong>Overreliance</strong> — the speed AI offers can tempt shortcuts
+        on edge-case testing. I try to notice when I'm trusting the model's confidence
+        more than the evidence.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      5. How I decide what's okay
+    </h2>
+    <p class="mb-4">
+      When a new situation doesn't fit neatly into the rules above, I ask
+      myself, roughly in this order:
+    </p>
+    <ol class="list-decimal list-inside mb-4 space-y-1">
+      <li>
+        <strong
+          >Would this violate a client NDA, contract, or regulatory
+          obligation?</strong
+        > If yes, it's off the table — no further discussion needed.
+      </li>
+      <li>
+        <strong
+          >Could this expose real user or financial data, even indirectly?</strong
+        > If there's meaningful risk, I don't do it, or I anonymize first.
+      </li>
+      <li>
+        <strong>Am I still the one accountable for correctness?</strong> If AI
+        assistance would mean I can no longer honestly vouch for the code, I slow
+        down and review more, or skip the assist.
+      </li>
+      <li>
+        <strong>Would my client be surprised to learn I did this?</strong> If the
+        honest answer is "yes, and they wouldn't be happy," that's a signal to
+        ask first or not do it.
+      </li>
+    </ol>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      6. Who's affected, and how I think about them
+    </h2>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>Clients</strong> — trust me with production financial infrastructure.
+        They deserve to know their systems weren't built on unreviewed or leaked
+        context.
+      </li>
+      <li>
+        <strong>End users</strong> — the people whose money and personal data flow
+        through systems I build. Their security and privacy come before my development
+        speed.
+      </li>
+      <li>
+        <strong>Collaborators/employers</strong> — anyone I work alongside should
+        be able to trust that "I built this" means I understand and stand behind
+        it, AI-assisted or not.
+      </li>
+      <li>
+        <strong>Future maintainers</strong> — code should be as legible and well-documented
+        whether AI helped write it or not; no one downstream should hit a wall
+        of code nobody can explain.
+      </li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      7. Disclosure — what I tell people, and when
+    </h2>
+    <p class="mb-4">
+      <strong>General baseline:</strong> I disclose that AI tools (Claude Code,
+      Gemini, Copilot) are part of my standard workflow, openly and by default
+      — it's listed on my homepage under my toolset. I don't treat AI assistance
+      as something to hide or something that needs a disclaimer on every commit,
+      the same way I wouldn't caveat every use of an IDE autocomplete or a linter.
+    </p>
+    <p class="mb-4">
+      <strong>Where I go further:</strong>
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        <strong>Client work</strong> — new clients are told upfront, before any
+        contract is signed, which AI tools are part of my process and what my data-handling
+        boundaries are (Section 2). If a client wants zero AI involvement in their
+        codebase, that's a term we set explicitly.
+      </li>
+      <li>
+        <strong>Security-critical or compliance-critical deliverables</strong>
+        — I note in the handoff/documentation which components had AI involvement
+        in drafting, so reviewers know where to apply extra scrutiny.
+      </li>
+      <li>
+        <strong>Written content representing my own views</strong> (this page included)
+        — drafted with AI assistance, edited and approved by me; the judgments
+        and commitments here are mine.
+      </li>
+    </ul>
+    <p class="mb-4">
+      <strong>Attribution template I use for project documentation:</strong>
+    </p>
+    <blockquote class="border-l-4 border-primary-500 pl-4 italic mb-4">
+      <p>
+        <em
+          >AI Assistance Disclosure: Portions of this codebase were drafted
+          with the assistance of Claude Code / GitHub Copilot / Gemini and
+          reviewed, tested, and approved by [Shardul Kavar] before deployment.
+          Architecture decisions, security review, and final sign-off were
+          performed by a human.</em>
+      </p>
+    </blockquote>
+
+    <h2 class="text-2xl font-semibold mb-3 mt-6">
+      8. When detailed disclosure becomes necessary
+    </h2>
+    <p class="mb-4">
+      A brief, standing disclosure (like this page) is enough for routine
+      work. I move to explicit, case-by-case disclosure when:
+    </p>
+    <ul class="list-disc list-inside mb-4 space-y-1">
+      <li>
+        The client operates under regulatory regimes that require documenting
+        tooling used in system development (common in fintech/compliance
+        work).
+      </li>
+      <li>
+        The deliverable is security- or compliance-critical, where knowing <em
+          >what</em
+        > was AI-assisted changes how it should be reviewed.
+      </li>
+      <li>
+        Someone directly asks — I answer specifically and honestly, not with a
+        generic policy link.
+      </li>
+      <li>
+        I'm publishing something (an article, a case study) where the reader
+        would reasonably want to know how much of the reasoning or writing is
+        mine versus AI-drafted.
+      </li>
+    </ul>
+
+    <hr class="my-6 border-gray-700" />
+
+    <p class="text-sm text-gray-400">
+      Questions about how I work with AI on a specific project? Reach out at <a
+        href="mailto:shardulpatel010@gmail.com"
+        class="text-primary-500 hover:underline">shardulpatel010@gmail.com</a
+      >.
+    </p>
+
+    <!-- Placeholder for AI Course Certificates -->
+    <div class="mt-8 p-4 border border-gray-700 rounded-lg">
+      <h3 class="text-xl font-semibold mb-2">AI Course Certificates</h3>
+      <p class="mb-4">
+        To demonstrate my proficiency and continuous learning in AI, here are
+        some of my relevant course certifications. These attest to my
+        foundational knowledge and practical skills in various AI domains.
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li>
+          <a href="#" class="text-primary-500 hover:underline"
+            >[Link to Certificate 1: AI Fundamentals]</a>
+        </li>
+        <li>
+          <a href="#" class="text-primary-500 hover:underline"
+            >[Link to Certificate 2: Machine Learning Specialization]</a>
+        </li>
+        <li>
+          <a href="#" class="text-primary-500 hover:underline"
+            >[Link to Certificate 3: Deep Learning with TensorFlow]</a>
+        </li>
+        <li>
+          <a href="#" class="text-primary-500 hover:underline"
+            >... (Add more certificate links/images here)</a>
+        </li>
+      </ul>
+      <p class="mt-4 text-sm text-gray-400">
+        (Note: Actual certificate links/images would be embedded here.)
+      </p>
+      <button
+        id="open-certificates-carousel-button"
+        class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        View Certificates
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Basic styling for the modal, UnoCSS should handle most of it */
+  /* You might need to adjust z-index if other elements conflict */
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const closeButton = document.getElementById('ai-modal-close-button');
+    const modal = document.getElementById('ai-disclaimer-modal');
+    const openCertificatesButton = document.getElementById('open-certificates-carousel-button');
+
+    if (!closeButton || !modal || !openCertificatesButton) {
+      console.log("+++++++++++++++++++++++++++++++")
+      return;
+    }
+
+    // Ensure modal is hidden on initial load
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+
+    const toggleModal = (shouldOpen) => {
+      if (shouldOpen) {
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+      } else {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    };
+
+    document.addEventListener('open-ai-disclaimer-modal', () => toggleModal(true)); // Open via custom event
+    closeButton.addEventListener('click', () => toggleModal(false)); // Close via button click
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        toggleModal(false);
+      }
+    });
+
+    // Close with escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        toggleModal(false);
+      }
+    });
+
+    // Event listener for the new certificates button
+    openCertificatesButton.addEventListener('click', () => {
+      document.dispatchEvent(new CustomEvent('open-certificates-carousel-modal'));
+      toggleModal(false); // Close the disclaimer modal when opening the carousel
+    });
+  });
+</script>

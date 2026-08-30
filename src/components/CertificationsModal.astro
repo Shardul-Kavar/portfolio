@@ -1,0 +1,114 @@
+---
+import InfoModal from './InfoModal.astro';
+import { certificates } from '../data/certificates';
+console.log("🚀 ~ certificates:", certificates)
+---
+
+<InfoModal>
+  <div id="certificate-carousel" class="relative w-full max-w-2xl mx-auto">
+    <!-- Slides -->
+    {
+      certificates.map((cert, index) => (
+        <div class="certificate-item" data-index={index} style="display: none;">
+          <h2 class="text-xl font-bold mb-4 text-center">
+            {cert.name}
+          </h2>
+          <div class="flex justify-center">
+            <a
+              href={`/${cert.imagePath}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block"
+            >
+              <img
+                src={`/${cert.imagePath}`}
+                alt={`${cert.name} Certificate`}
+                class="max-w-full h-auto rounded-md object-contain"
+                style="max-height: 70vh;"
+              />
+            </a>
+          </div>
+        </div>
+      ))
+    }
+
+    <!-- Navigation Buttons -->
+    <button
+      id="prev-btn"
+      class="absolute top-1/2 left-0 md:-left-0 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/70 text-white p-2 mt-5 rounded-full focus:outline-none z-10"
+      style="display: none;"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      id="next-btn"
+      class="absolute top-1/2 right-0 md:-right-0 transform -translate-y-1/2 bg-gray-800/50 hover:bg-gray-700/70 text-white p-2 mt-5 rounded-full focus:outline-none z-10"
+      style="display: none;"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <script is:inline>
+    const carousel = document.getElementById('certificate-carousel');
+    console.log('Carousel element:', carousel);
+
+    const certificateItems = carousel.querySelectorAll('.certificate-item');
+    const prevBtn = carousel.querySelector('#prev-btn');
+    const nextBtn = carousel.querySelector('#next-btn');
+
+    let currentIndex = 0;
+
+    function showCertificate(index) {
+      certificateItems.forEach((item, i) => {
+        item.style.display = i === index ? 'block' : 'none';
+      });
+    }
+
+    if (certificateItems.length > 1) {
+      prevBtn.style.display = 'block';
+      nextBtn.style.display = 'block';
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex =
+          (currentIndex - 1 + certificateItems.length) %
+          certificateItems.length;
+        showCertificate(currentIndex);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % certificateItems.length;
+        showCertificate(currentIndex);
+      });
+    }
+
+    // Initially show the first certificate
+    if (certificateItems.length > 0) {
+      showCertificate(currentIndex);
+    }
+  </script>
+</InfoModal>
