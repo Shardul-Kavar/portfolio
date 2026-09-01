@@ -9,8 +9,10 @@ export async function GET(context) {
   const blog = await getPublishedPosts();
   return rss({
     title: "Shardul Kavar's Blog",
-    description: "my blog",
+    description:
+      "Technical articles, software architecture insights, and engineering guides by Shardul Kavar.",
     site: context.site,
+    customData: `<language>en-us</language>`,
     items: blog.map((post) => ({
       title: post.data.title,
       pubDate: post.data.publishAt,

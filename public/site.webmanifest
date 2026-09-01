@@ -1,0 +1,21 @@
+﻿{
+  "name": "Shardul Kavar - Full-Stack Developer & Backend Architect",
+  "short_name": "Shardul Kavar",
+  "description": "Portfolio and engineering blog of Shardul Kavar - Full-Stack Developer & Backend Architect specializing in fintech and microservices.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/me.png",
+      "sizes": "400x400",
+      "type": "image/png"
+    }
+  ]
+}

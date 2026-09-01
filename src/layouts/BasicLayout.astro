@@ -9,97 +9,176 @@ interface Props {
   page?: 'travel' | 'blog';
   slug?: string | undefined;
   pubDate?: string;
+  coverImage?: string;
 }
 
-const { title, description, page, pubDate } = Astro.props;
-const image =
-  page === 'travel'
-    ? `${Astro.url.origin}/globe_preview.webp"`
-    : `${Astro.url.origin}/og-image.png`;
+const { title, description, page, slug, pubDate, coverImage } = Astro.props;
 
-const schema =
-  page !== 'blog'
-    ? {
-        '@context': 'http://schema.org',
-        '@type': 'Person',
-        name: 'Gianmarco',
-        url: Astro.url.origin,
-        sameAs: [LINKS.linkedin, LINKS.github],
-        image: `${Astro.url.origin}/og-image.png`,
-        jobTitle: 'Freelance Frontend Developer',
-        worksFor: {
-          '@type': 'Organization',
-          name: 'Self-Employed',
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: 'Italy',
-            addressCountry: 'IT',
-          },
-        },
-        nationality: {
-          '@type': 'Country',
-          name: 'Italy',
-        },
-      }
-    : {
-        '@context': 'http://schema.org',
-        '@type': 'BlogPosting',
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': Astro.url.href,
-        },
-        headline: title || title,
-        description: description || title,
-        image: `${Astro.url.origin}/og-image.png`, //TODO: dynamic
-        author: {
-          '@type': 'Person',
-          name: 'Gianmarco',
-          url: Astro.url.origin,
-          sameAs: [LINKS.linkedin, LINKS.github],
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Gianmarco',
-          logo: {
-            '@type': 'ImageObject',
-            url: `${Astro.url.origin}/og-image.png`,
-          },
-        },
-        datePublished: pubDate || new Date().toISOString(),
-        dateModified: pubDate || new Date().toISOString(),
-      };
+const isArticle = page === 'blog' && Boolean(slug);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
+
+const ogImage = coverImage
+  ? (coverImage.startsWith('http') ? coverImage : `${Astro.url.origin}${coverImage.startsWith('/') ? '' : '/'}${coverImage}`)
+  : (page === 'travel'
+    ? `${Astro.url.origin}/globe_preview.png`
+    : `${Astro.url.origin}/og-image.png`);
+
+const personSchema = {
+  '@type': 'Person',
+  '@id': `${Astro.url.origin}/#person`,
+  name: 'Shardul Kavar',
+  alternateName: ['Shardul Patel', 'Shardul'],
+  url: Astro.url.origin,
+  image: `${Astro.url.origin}/me.png`,
+  jobTitle: 'Full-Stack Developer & Backend Architect',
+  description:
+    'Full-stack software developer and backend architect specializing in fintech systems, 25+ PSP payment integrations, and scalable microservices.',
+  sameAs: [LINKS.linkedin, LINKS.github, LINKS.chess],
+  email: `mailto:${LINKS.email}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'India',
+  },
+  knowsAbout: [
+    'Full-Stack Development',
+    'Backend Architecture',
+    'Fintech Infrastructure',
+    'Payment Service Provider (PSP) Integration',
+    'KYC/AML Compliance Pipelines',
+    'Microservices Architecture',
+    'Node.js',
+    'TypeScript',
+    'JavaScript',
+    'PostgreSQL',
+    'MongoDB',
+    'Redis',
+    'RabbitMQ',
+    'ElasticSearch',
+    'React.js',
+    'Next.js',
+    'SolidJS',
+    'Astro',
+    'Docker',
+    'AWS (EC2, ECS, ECR, S3, Lambda)',
+    'REST APIs',
+    'GraphQL',
+    'Plaid API',
+    'Stripe Integration',
+    'Razorpay Integration',
+  ],
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${Astro.url.origin}/#website`,
+  url: Astro.url.origin,
+  name: 'Shardul Kavar | Portfolio & Blog',
+  description:
+    'Personal portfolio and technical articles of Shardul Kavar - Full-Stack Developer & Backend Architect.',
+  publisher: {
+    '@id': `${Astro.url.origin}/#person`,
+  },
+  inLanguage: 'en-US',
+};
+
+const pageSchema = isArticle
+  ? {
+      '@type': 'BlogPosting',
+      '@id': `${canonicalURL}#article`,
+      isPartOf: {
+        '@id': `${Astro.url.origin}/#website`,
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalURL,
+      },
+      headline: title,
+      description: description,
+      image: ogImage,
+      author: {
+        '@id': `${Astro.url.origin}/#person`,
+      },
+      publisher: {
+        '@id': `${Astro.url.origin}/#person`,
+      },
+      datePublished: pubDate || new Date().toISOString(),
+      dateModified: pubDate || new Date().toISOString(),
+      inLanguage: 'en-US',
+    }
+  : {
+      '@type': 'ProfilePage',
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL,
+      name: title,
+      description: description,
+      isPartOf: {
+        '@id': `${Astro.url.origin}/#website`,
+      },
+      mainEntity: {
+        '@id': `${Astro.url.origin}/#person`,
+      },
+      inLanguage: 'en-US',
+    };
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [personSchema, websiteSchema, pageSchema],
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta content="width=device-width" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/site.webmanifest" rel="manifest" />
     <meta content={Astro.generator} name="generator" />
+    <meta name="theme-color" content="#121212" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta content={title} name="title" />
     <meta content={description} name="description" />
-    <meta content="index, follow" name="robots" />
-    <!-- Basic OG tags for sharing your website's content on platforms like Facebook and LinkedIn -->
-    <meta content={title} property="og:title" />
-    <meta content={description} property="og:description" />
-    <meta content="website" property="og:type" />
-    <meta content={Astro.url.origin} property="og:url" />
+    <meta content="Shardul Kavar" name="author" />
     <meta
-      content={image || `${Astro.url.origin}/og-image.png`}
-      property="og:image"
+      content="Shardul Kavar, Full-Stack Developer, Backend Architect, Fintech Engineer, PSP Integrations, Node.js, TypeScript, Microservices, Software Engineer Portfolio, India"
+      name="keywords"
     />
-    <!-- Basic Twitter Card tags -->
-    <meta content="summary_large_image" name="twitter:card" />
-    <meta content={title} name="twitter:title" />
-    <meta content={description} name="twitter:description" />
     <meta
-      content={image || `${Astro.url.origin}/og-image.png`}
-      name="twitter:image"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      name="robots"
+    />
+    <link href={canonicalURL} rel="canonical" />
+    <link
+      href="/rss.xml"
+      rel="alternate"
+      title="Shardul Kavar's Blog"
+      type="application/rss+xml"
     />
 
-    <link href="https://cdn.fontshare.com" rel="preconnect" />
-    <link href={Astro.url.href} rel="canonical" />
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta content={isArticle ? 'article' : 'website'} property="og:type" />
+    <meta content={canonicalURL} property="og:url" />
+    <meta content={title} property="og:title" />
+    <meta content={description} property="og:description" />
+    <meta content={ogImage} property="og:image" />
+    <meta content={title} property="og:image:alt" />
+    <meta content="Shardul Kavar" property="og:site_name" />
+    <meta content="en_US" property="og:locale" />
+    {pubDate && <meta content={new Date(pubDate).toISOString()} property="article:published_time" />}
+    {isArticle && <meta content="Shardul Kavar" property="article:author" />}
+
+    <!-- Twitter / X -->
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content={canonicalURL} property="twitter:url" />
+    <meta content={title} name="twitter:title" />
+    <meta content={description} name="twitter:description" />
+    <meta content={ogImage} name="twitter:image" />
+    <meta content={title} name="twitter:image:alt" />
+
+    <!-- Structured Data (JSON-LD) -->
     <script
       is:inline
       set:html={JSON.stringify(schema)}
