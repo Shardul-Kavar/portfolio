@@ -3,12 +3,15 @@ import BasicLayout from './BasicLayout.astro';
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   page?: 'travel' | 'blog';
   fullScreen?: string;
 }
 
-const { title, description, page } = Astro.props;
+const defaultDescription =
+  'Portfolio of Shardul Kavar, Full-Stack Developer & Backend Architect specializing in fintech systems, 25+ PSP payment integrations, and scalable microservices.';
+
+const { title, description = defaultDescription, page } = Astro.props;
 ---
 
 <BasicLayout description={description} page={page} title={title}>

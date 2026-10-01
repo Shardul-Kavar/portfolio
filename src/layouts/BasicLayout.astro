@@ -5,31 +5,44 @@ import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
   page?: 'travel' | 'blog';
   slug?: string | undefined;
   pubDate?: string;
   coverImage?: string;
 }
 
-const { title, description, page, slug, pubDate, coverImage } = Astro.props;
+const defaultDescription =
+  'Portfolio of Shardul Kavar, Full-Stack Developer & Backend Architect specializing in fintech systems, 25+ PSP payment integrations, and scalable microservices.';
+
+const {
+  title,
+  description = defaultDescription,
+  page,
+  slug,
+  pubDate,
+  coverImage,
+} = Astro.props;
 
 const isArticle = page === 'blog' && Boolean(slug);
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin).href;
+const siteOrigin = Astro.site ? Astro.site.origin : Astro.url.origin;
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin).href;
 
 const ogImage = coverImage
-  ? (coverImage.startsWith('http') ? coverImage : `${Astro.url.origin}${coverImage.startsWith('/') ? '' : '/'}${coverImage}`)
-  : (page === 'travel'
-    ? `${Astro.url.origin}/globe_preview.png`
-    : `${Astro.url.origin}/og-image.png`);
+  ? coverImage.startsWith('http')
+    ? coverImage
+    : `${siteOrigin}${coverImage.startsWith('/') ? '' : '/'}${coverImage}`
+  : page === 'travel'
+    ? `${siteOrigin}/globe_preview.png`
+    : `${siteOrigin}/og-image.png`;
 
 const personSchema = {
   '@type': 'Person',
-  '@id': `${Astro.url.origin}/#person`,
+  '@id': `${siteOrigin}/#person`,
   name: 'Shardul Kavar',
   alternateName: ['Shardul Patel', 'Shardul'],
-  url: Astro.url.origin,
-  image: `${Astro.url.origin}/me.png`,
+  url: siteOrigin,
+  image: `${siteOrigin}/me.png`,
   jobTitle: 'Full-Stack Developer & Backend Architect',
   description:
     'Full-stack software developer and backend architect specializing in fintech systems, 25+ PSP payment integrations, and scalable microservices.',
@@ -70,13 +83,13 @@ const personSchema = {
 
 const websiteSchema = {
   '@type': 'WebSite',
-  '@id': `${Astro.url.origin}/#website`,
-  url: Astro.url.origin,
+  '@id': `${siteOrigin}/#website`,
+  url: siteOrigin,
   name: 'Shardul Kavar | Portfolio & Blog',
   description:
     'Personal portfolio and technical articles of Shardul Kavar - Full-Stack Developer & Backend Architect.',
   publisher: {
-    '@id': `${Astro.url.origin}/#person`,
+    '@id': `${siteOrigin}/#person`,
   },
   inLanguage: 'en-US',
 };
@@ -86,7 +99,7 @@ const pageSchema = isArticle
       '@type': 'BlogPosting',
       '@id': `${canonicalURL}#article`,
       isPartOf: {
-        '@id': `${Astro.url.origin}/#website`,
+        '@id': `${siteOrigin}/#website`,
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
@@ -96,10 +109,10 @@ const pageSchema = isArticle
       description: description,
       image: ogImage,
       author: {
-        '@id': `${Astro.url.origin}/#person`,
+        '@id': `${siteOrigin}/#person`,
       },
       publisher: {
-        '@id': `${Astro.url.origin}/#person`,
+        '@id': `${siteOrigin}/#person`,
       },
       datePublished: pubDate || new Date().toISOString(),
       dateModified: pubDate || new Date().toISOString(),
@@ -112,10 +125,10 @@ const pageSchema = isArticle
       name: title,
       description: description,
       isPartOf: {
-        '@id': `${Astro.url.origin}/#website`,
+        '@id': `${siteOrigin}/#website`,
       },
       mainEntity: {
-        '@id': `${Astro.url.origin}/#person`,
+        '@id': `${siteOrigin}/#person`,
       },
       inLanguage: 'en-US',
     };
@@ -140,7 +153,7 @@ const schema = {
     <!-- Primary Meta Tags -->
     <title>{title}</title>
     <meta content={title} name="title" />
-    <meta content={description} name="description" />
+    <meta name="description" content={description} />
     <meta content="Shardul Kavar" name="author" />
     <meta
       content="Shardul Kavar, Full-Stack Developer, Backend Architect, Fintech Engineer, PSP Integrations, Node.js, TypeScript, Microservices, Software Engineer Portfolio, India"
@@ -167,7 +180,14 @@ const schema = {
     <meta content={title} property="og:image:alt" />
     <meta content="Shardul Kavar" property="og:site_name" />
     <meta content="en_US" property="og:locale" />
-    {pubDate && <meta content={new Date(pubDate).toISOString()} property="article:published_time" />}
+    {
+      pubDate && (
+        <meta
+          content={new Date(pubDate).toISOString()}
+          property="article:published_time"
+        />
+      )
+    }
     {isArticle && <meta content="Shardul Kavar" property="article:author" />}
 
     <!-- Twitter / X -->
@@ -183,6 +203,11 @@ const schema = {
       is:inline
       set:html={JSON.stringify(schema)}
       type="application/ld+json"
+    />
+
+    <meta
+      name="google-site-verification"
+      content="PhwXAFT1XRgZBNsd1Ehjrr140PRfop7ga7S50LmG_AY"
     />
   </head>
   <body
