@@ -209,6 +209,16 @@ const schema = {
       name="google-site-verification"
       content="PhwXAFT1XRgZBNsd1Ehjrr140PRfop7ga7S50LmG_AY"
     />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MZX9N4HSEH"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MZX9N4HSEH');
+    </script>
   </head>
   <body
     class={`bg-gray-100 dark:bg-darkslate-500 text-gray-900 dark:text-gray-100 flex flex-col items-center ${
