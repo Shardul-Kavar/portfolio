@@ -1,7 +1,7 @@
 export const LINKS = {
   github: "https://github.com/Shardul-Kavar",
   linkedin: "https://www.linkedin.com/in/shardul-kavar/",
-  discord: "https://discordapp.com/users/1399286980960980992",
+  x: "https://x.com/ShardulPatel01",
   email: "shardulpatel010@gmail.com",
   chess: "https://www.chess.com/member/addictedsk"
 };
